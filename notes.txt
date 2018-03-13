@@ -1,0 +1,10 @@
+Required user input:
+    From: time, timezone.a
+    To: timezone.b
+
+Return: time(convered), timezone.b
+
+provide timezone link https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations
+
+use this https://apidock.com/ruby/DateTime/strftime
+

@@ -8,23 +8,11 @@ provide timezone link https://en.wikipedia.org/wiki/List_of_time_zone_abbreviati
 
 use this https://apidock.com/ruby/DateTime/strftime
 
-# bot.message(content: '!time') do |event|
-#   # Send a message, and store a reference to it that we can issue a delete request later
-#   message = event.respond "The current time is: #{Time.now.strftime('%F %T %Z')}"
 
-#   # React to the message to give a user an easy "button" to press
-#   message.react CROSS_MARK
 
-#   # Add an await for a ReactionAddEvent, that will only trigger for reactions
-#   # that match our CROSS_MARK emoji. This time, I'm using interpolation to make the
-#   # await key unique for this event so that multiple awaits can exist.
-#   bot.add_await(:"delete_#{message.id}", Discordrb::Events::ReactionAddEvent, emoji: CROSS_MARK) do |reaction_event|
-#     # Since this code will run on every CROSS_MARK reaction, it might not
-#     # be on our time message we sent earlier. We use `next` to skip the rest
-#     # of the block unless it was our message that was reacted to.
-#     next true unless reaction_event.message.id == message.id
 
-#     # Delete the matching message.
-#     message.delete
-#   end
-# end
+1. error message/escape for invalid input - really struggling w/ this
+2. instructions into help function - done
+3. input into first string: !timebot 2000, +3, -4 or !timebot help  
+ - timebot help and list done, not sure how to do the other
+ 

@@ -1,15 +1,13 @@
 require 'discordrb'
 # Create a bot
 # Here we output the invite URL to the console so the bot account can be invited to the channel. This only has to be
-
 # done once, afterwards, you can remove this part if you want
 puts "This timebot's invite URL is #{bot.invite_url}."
 puts 'Click on it to invite it to your server.'
 
 bot.message(start_with: '/timebot') do |event|
     try_this = event.content[9..-1]
-    author = event.author.name
-    puts "author: #{author}"
+   
     def letters?(string)
         string.chars.any? { |char| ('a'..'z').include? char.downcase }
     end
@@ -36,18 +34,18 @@ bot.message(start_with: '/timebot') do |event|
     end
     
     if try_this == 'list'
-        event.respond "Here is a list of all the timezones: https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations."
+        event.respond "#{event.user.mention} Here is a list of all the timezones: https://en.wikipedia.org/wiki/List_of_time_zone_abbreviations."
     elsif try_this == 'help'
-        event.respond "Enter time to be converted using the 24hr clock, from which timezone, and to which timezone \nTimezones MUST be a numerical value. \n**_Example:_** _2100 +3 -4_\nType 'list' for a list of all timezones"
+        event.respond "#{event.user.mention} Enter time to be converted using the 24hr clock, from which timezone, and to which timezone \nTimezones MUST be a numerical value. \n**_Example:_** _2100 +3 -4_\nType 'list' for a list of all timezones"
     else 
         splitting = try_this.split(' ')
         if splitting.count != 3
-            event.respond "You done messed up. It should look like this: _2100 +3 -4_"
+            event.respond "#{event.user.mention} You done messed up. It should look like this: _2100 +3 -4_"
         elsif letters?(splitting[1]) == true || letters?(splitting[2]) == true
-            event.respond "Timezones must be in numerical format.  It should look like this: _2100 +3 -4_" 
+            event.respond "#{event.user.mention} Timezones must be in numerical format.  It should look like this: _2100 +3 -4_" 
         else
             user_input = splitting.map { |x| x.to_i }
-            event.respond time_changer(user_input[0], user_input[1], user_input[2])
+            event.respond "#{event.user.mention} #{time_changer(user_input[0], user_input[1], user_input[2])}"
         end
     end
 end

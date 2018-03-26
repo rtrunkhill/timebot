@@ -1,6 +1,9 @@
 require 'discordrb'
+require 'dotenv'
 # Create a bot
 # Here we output the invite URL to the console so the bot account can be invited to the channel. This only has to be
+Dotenv.load
+bot = Discordrb::Bot.new token: ENV['TOKEN'], client_id: '425377506041004033'
 # done once, afterwards, you can remove this part if you want
 puts "This timebot's invite URL is #{bot.invite_url}."
 puts 'Click on it to invite it to your server.'
@@ -14,21 +17,22 @@ bot.message(start_with: '/timebot') do |event|
     
     def time_changer(time, zone_a, zone_b)
         message_time = zone_b
+        from_time = zone_a
         zone_a = zone_a * 100
         zone_b = zone_b * 100
         new_time = time - (zone_a - zone_b)
         if new_time < 0
-            final_answer =  "#{2400 - new_time.abs} previous day UTC #{message_time}" 
+            final_answer =  "#{time} UTC #{from_time} is **#{2400 - new_time.abs} previous day UTC #{message_time}**" 
         elsif new_time > 2400
-            final_answer = "#{(2400 - new_time).abs} next day UTC #{message_time}"
+            final_answer = "#{time} UTC #{from_time} is **#{(2400 - new_time).abs} next day UTC #{message_time}**"
         elsif new_time == 2400
-            final_answer = "midnight UTC #{message_time}"
+            final_answer = "#{time} UTC #{from_time} is **midnight UTC #{message_time}**"
         elsif new_time == 0
-            final_answer = "midnight previous day UTC #{message_time}"
+            final_answer = "#{time} UTC #{from_time} is **midnight previous day UTC #{message_time}**"
         elsif new_time < 100
-            final_answer  = "00#{new_time} UTC #{message_time}"
+            final_answer  = "#{time} UTC #{from_time} is **00#{new_time} UTC #{message_time}**"
         else
-            final_answer = "#{new_time } UTC #{message_time}"
+            final_answer = "#{time} UTC #{from_time} is **#{new_time } UTC #{message_time}**"
         end
         return final_answer
     end
@@ -40,7 +44,7 @@ bot.message(start_with: '/timebot') do |event|
     else 
         splitting = try_this.split(' ')
         if splitting.count != 3
-            event.respond "#{event.user.mention} You done messed up. It should look like this: _2100 +3 -4_"
+            event.respond "#{event.user.mention} You done messed up, Timebot requires 3 inputs. It should look like this: _2100 +3 -4_"
         elsif letters?(splitting[1]) == true || letters?(splitting[2]) == true
             event.respond "#{event.user.mention} Timezones must be in numerical format.  It should look like this: _2100 +3 -4_" 
         else

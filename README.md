@@ -1,6 +1,19 @@
-# Timebot
+# Timebot v1.0 (3/27/2018)
 
-A discord bot that will convert timezones for you.  This will prevent missed games due to confusion related to converting time from players in different timezones.
+A discord bot that will convert timezones for you.  This will prevent missed games due to the confusion of converting time from players in different timezones.
+
+Install Timebot on your server with this link: https://discordapp.com/oauth2/authorize?client_id=425377506041004033&scope=bot
+
+To use timebot - 
+
+/timebot (time to be converted using the 24hr clock) (timezone to be converted FROM) (timezone to be converted TO)
+
+e.g. /timebot 1600 +3 -4
+    
+/timebot list  - will provide a wiki link to all timezones if you aren't sure of the numerical value of the timezones
+/timebot help  - if you get stuck
+    
+Timebot is OPEN SOURCE  If you want contribute make sure you read the following:
 
 **Code of Conduct**
 

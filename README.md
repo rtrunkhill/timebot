@@ -5,7 +5,7 @@ A discord bot that will convert timezones for you.  This will prevent missed gam
 Install Timebot on your server with this link: https://discordapp.com/oauth2/authorize?client_id=425377506041004033&scope=bot
 
 To use timebot - 
-
+ 
 /timebot (time to be converted using the 24hr clock) (timezone to be converted FROM) (timezone to be converted TO)
 
 e.g. /timebot 1600 +3 -4

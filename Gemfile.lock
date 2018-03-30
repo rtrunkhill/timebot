@@ -212,7 +212,6 @@ DEPENDENCIES
   bigdecimal (= 1.2.8)
   binding_of_caller (= 0.7.2)
   builder (= 3.2.3)
-  bundler (= 1.16.1)
   bundler-unload (= 1.0.2)
   byebug (= 9.1.0)
   coffee-rails (= 4.1.1)

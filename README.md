@@ -1,4 +1,4 @@
-# Timebot v1.0 (3/27/2018) 
+# Timebot v1.0 (3/27/2018)
 
 A discord bot that will convert timezones for you.  This will prevent missed games due to the confusion of converting time from players in different timezones.
 
